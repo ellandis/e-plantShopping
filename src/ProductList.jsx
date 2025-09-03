@@ -11,7 +11,7 @@ function ProductList({ onHomeClick }) {
             plants: [
                 {
                     name: "Snake Plant",
-                    image: "https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg",
+                      image: "https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg",
                     description: "Produces oxygen at night, improving air quality.",
                     cost: "$15"
                 },
@@ -274,7 +274,18 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-
+                    plantsArray.map((category, index) => (
+                        <div key={index}> 
+                        <h1>
+                            <div>{category.category}</div>
+                        </h1>
+                        <div className="product-list">
+                            {category.plants.map((plant,plantIndex) => (
+                                <div className="product-card" key={plantIndex}></div>
+                            )}
+                        </div>
+                        </div>
+                    ))
 
                 </div>
             ) : (
