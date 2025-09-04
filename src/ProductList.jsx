@@ -331,7 +331,8 @@ function ProductList({ onHomeClick }) {
                   id="IconChangeColor"
                   height="68"
                   width="68">
-                  <rect width="156" height="156" fill="none"></rect>
+                    <rect width="156" height="156" fill="none"></rect>
+                    
                   <circle cx="80" cy="216" r="12"></circle>
                   <circle cx="184" cy="216" r="12"></circle>
                   <path
@@ -340,9 +341,10 @@ function ProductList({ onHomeClick }) {
                     stroke="#faf9f9"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    stroke-width="9"
                     id="mainIconPathAttribute"></path>
                 </svg>
+                
               </h1>
             </a>
           </div>
@@ -356,14 +358,14 @@ function ProductList({ onHomeClick }) {
               index // Loop through each category in plantsArray
             ) => (
               <div key={index}>
-                {" "}
+                
                 {/* Unique key for each category div */}
                 <h1>
-                  <div>{category.category}</div>{" "}
+                  <div>{category.category}</div>
                   {/* Display the category name */}
                 </h1>
                 <div className="product-list">
-                  {" "}
+                  
                   {/* Container for the list of plant cards */}
                   {category.plants.map(
                     (
@@ -371,27 +373,29 @@ function ProductList({ onHomeClick }) {
                       plantIndex // Loop through each plant in the current category
                     ) => (
                       <div className="product-card" key={plantIndex}>
-                        {" "}
+                       
                         {/* Unique key for each plant card */}
                         <img
                           className="product-image"
                           src={plant.image} // Display the plant image
                           alt={plant.name} // Alt text for accessibility
                         />
-                        <div className="product-title">{plant.name}</div>{" "}
+                        <div className="product-title">{plant.name}</div>
                         {/* Display plant name */}
                         {/* Display other plant details like description and cost */}
                         <div className="product-description">
                           {plant.description}
-                        </div>{" "}
+                        </div>
                         {/* Display plant description */}
-                        <div className="product-cost">{plant.cost}</div>{" "}
+                        <div className="product-cost">{plant.cost}</div>
                         {/* Display plant cost */}
-                        <button
-                          className="product-button"
-                          onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                      
+                        <button className="product-button" 
+                        onClick={() => handleAddToCart(plant)}
+                        disabled={addedToCart[plant.name]}
+                        style={{ backgroundColor: addedToCart[plant.name] ? "gray" : "green" }}
                         >
-                          Add to Cart
+                          {addedToCart[plant.name] ? "Added to Cart" : "Add to Cart"}
                         </button>
                       </div>
                     )
