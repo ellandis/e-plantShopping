@@ -8,6 +8,7 @@ function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState([]);
+  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const plantsArray = [
     {
@@ -274,7 +275,7 @@ function ProductList({ onHomeClick }) {
 
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
-
+    setCount(count + 1);
     setAddedToCart((prevState) => ({...prevState, [product.name]: true,}));
   }
 
@@ -331,8 +332,8 @@ function ProductList({ onHomeClick }) {
                   id="IconChangeColor"
                   height="68"
                   width="68">
-                    <rect width="156" height="156" fill="none"></rect>
-                    
+                  <rect width="156" height="156" fill="none">
+                  </rect>
                   <circle cx="80" cy="216" r="12"></circle>
                   <circle cx="184" cy="216" r="12"></circle>
                   <path
@@ -343,8 +344,9 @@ function ProductList({ onHomeClick }) {
                     stroke-linejoin="round"
                     stroke-width="9"
                     id="mainIconPathAttribute"></path>
+                    <text x="100" y="150" fill="red" fontSize="90px" fontWeight="bold">{count}</text>
                 </svg>
-                
+               
               </h1>
             </a>
           </div>
